@@ -1,0 +1,135 @@
+:root {
+    --width-book: 400px;
+    --height-book: 500px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Signika Negative", sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book {
+    position: relative;
+    width: var(--width-book);
+    height: var(--height-book);
+    transition: 0.5s;
+}
+
+.book .background {
+    position: absolute;
+    width: calc(var(--height-book) / 2);
+    height: calc(var(--height-book) / 2);
+    z-index: -1;
+    top: calc(var(--height-book) / 2 - 10px);
+    background-color: white;
+    left: calc(var(--width-book) / 2 - var(--height-book) / 4 + var(--width-book));
+    filter: blur(20px);
+    transition: 0.5s;
+}
+
+.book .background:first-child {
+    left: calc(var(--width-book) / 2 - var(--height-book) / 4);
+}
+
+.book p:nth-child(2) {
+    position: absolute;
+    width: inherit;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    top: calc(var(--height-book) / 2 - 10px);
+    z-index: -1;
+    top: calc(var(--height-book) / 2 - 10px);
+    transition: 0.5s;
+    font-family: "Satisfy", cursive;
+    font-size: 30px;
+    color: #7f092d;
+    transition: 0.5s;
+}
+
+.book p:last-child {
+    position: absolute;
+    width: inherit;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    top: calc(var(--height-book) / 2 - 10px);
+    left: var(--width-book);
+    z-index: -1;
+    top: calc(var(--height-book) / 2 - 10px);
+    transition: 0.5s;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #7f092d;
+    transition: 0.5s;
+}
+
+.sheet {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+}
+
+.page {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("texture.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.page > div:last-child {
+    position: relative;
+    width: calc(var(--width-book) * 35 / 40);
+    height: calc(var(--height-book) * 4 / 5);
+    background-color: rgb(247, 247, 247);
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    padding-top: calc(var(--width-book) * 5 / 80 );
+}
+
+.page > div:first-child {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+}
+
+img {
+    width:  calc(var(--width-book) * 3 / 4 );
+    height:  calc(var(--width-book) * 3 / 4 );
+}
+
+.page div div {
+    position: absolute;
+    width: calc(var(--width-book) * 10 / 40);
+    height: calc(var(--width-book) * 4 / 40);
+    background-image: url("black_tape.png");
+    background-size: cover;
+}
+
+.page div div:nth-child(2) {
+    top:  calc(-1 * var(--width-book) * 2 / 40);
+    left:  calc(var(--width-book) * 4 / 40);
+}
+
+.page div div:last-child {
+    bottom:  calc(-1 * var(--width-book) * 2 / 40);
+    right:  calc(var(--width-book) * 4 / 40);
+}
