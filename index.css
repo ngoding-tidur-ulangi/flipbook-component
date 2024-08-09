@@ -24,7 +24,7 @@
     left: calc((100vw - 2 * var(--width-book)) / 2);
 }
 
-.container p {
+.container > p {
     position: absolute;
     width: 400px;
     text-align: center;
