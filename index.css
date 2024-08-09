@@ -1,20 +1,17 @@
 :root {
-    --width-book: 400px;
-    --height-book: 500px;
+    --width-book: 500px;
+    --height-book: 625px;
 }
 
 * {
     padding: 0;
     margin: 0;
-    font-family: "Signika Negative", sans-serif;
 }
 
 .container {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .book {
@@ -22,56 +19,8 @@
     width: var(--width-book);
     height: var(--height-book);
     transition: 0.5s;
-}
-
-.book .background {
-    position: absolute;
-    width: calc(var(--height-book) / 2);
-    height: calc(var(--height-book) / 2);
-    z-index: -1;
-    top: calc(var(--height-book) / 2 - 10px);
-    background-color: white;
-    left: calc(var(--width-book) / 2 - var(--height-book) / 4 + var(--width-book));
-    filter: blur(20px);
-    transition: 0.5s;
-}
-
-.book .background:first-child {
-    left: calc(var(--width-book) / 2 - var(--height-book) / 4);
-}
-
-.book p:nth-child(2) {
-    position: absolute;
-    width: inherit;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 10px;
-    top: calc(var(--height-book) / 2 - 10px);
-    z-index: -1;
-    top: calc(var(--height-book) / 2 - 10px);
-    transition: 0.5s;
-    font-family: "Satisfy", cursive;
-    font-size: 30px;
-    color: #7f092d;
-    transition: 0.5s;
-}
-
-.book p:last-child {
-    position: absolute;
-    width: inherit;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 10px;
-    top: calc(var(--height-book) / 2 - 10px);
-    left: var(--width-book);
-    z-index: -1;
-    top: calc(var(--height-book) / 2 - 10px);
-    transition: 0.5s;
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-    color: #7f092d;
-    transition: 0.5s;
+    top: calc((100vh - var(--height-book)) / 2);
+    left: calc((100vw - 2 * var(--width-book)) / 2);
 }
 
 .sheet {
@@ -87,49 +36,171 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("texture.jpg");
+    background-image: url("./assets/texture.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-
-.page > div:last-child {
-    position: relative;
-    width: calc(var(--width-book) * 35 / 40);
-    height: calc(var(--height-book) * 4 / 5);
+.photo {
+    position: absolute;
+    width: calc(var(--width-book) * 23 / 40);
+    height: calc(var(--width-book) * 23 / 40);
     background-color: rgb(247, 247, 247);
     display: flex;
     justify-content: center;
+    align-items: center;
     border-radius: 5px;
-    padding-top: calc(var(--width-book) * 5 / 80 );
-}
-
-.page > div:first-child {
-    position: absolute;
-    width: inherit;
-    height: inherit;
 }
 
 img {
-    width:  calc(var(--width-book) * 3 / 4 );
-    height:  calc(var(--width-book) * 3 / 4 );
+    width:  calc(var(--width-book) * 20 / 40);
+    height:  calc(var(--width-book) * 20 / 40);
 }
 
-.page div div {
+.sheet:first-child .page:first-child p {
+    font-family: "Satisfy", cursive;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.sheet:first-child .page:last-child p {
     position: absolute;
-    width: calc(var(--width-book) * 10 / 40);
-    height: calc(var(--width-book) * 4 / 40);
-    background-image: url("black_tape.png");
-    background-size: cover;
+    bottom: calc(var(--width-book) / 6);
+    width: 300px;
+    font-family: "Caveat", cursive;
+    font-size: 26px;
+    color: #ffffff;
+    text-align: center;
 }
 
-.page div div:nth-child(2) {
-    top:  calc(-1 * var(--width-book) * 2 / 40);
-    left:  calc(var(--width-book) * 4 / 40);
+.sheet:first-child .page:last-child img:nth-child(3) {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: calc(var(--width-book) / 9);
+    top: calc(var(--height-book) / 2);
+    animation: rotateSwing 2s infinite ease-in-out;
 }
 
-.page div div:last-child {
-    bottom:  calc(-1 * var(--width-book) * 2 / 40);
-    right:  calc(var(--width-book) * 4 / 40);
+.sheet:first-child .page:last-child img:nth-child(4) {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: calc(var(--width-book) / 9);
+    bottom: calc(var(--height-book) / 10);
+    animation: pulse 2s infinite ease-in-out;
 }
+
+.sheet:first-child .page:last-child .photo {
+    top: calc(var(--width-book) / 6);
+}
+
+.sheet:nth-child(2) .page:first-child .photo:first-child {
+    top: calc(var(--width-book) / 40);
+    left: calc(var(--width-book) / 40);
+}
+
+.sheet:nth-child(2) .page:first-child .photo:nth-child(2) {
+    bottom: calc(var(--width-book) / 40);
+    right: calc(var(--width-book) / 40);
+}
+
+.sheet:nth-child(2) .page:first-child > img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+}
+
+.sheet:nth-child(2) .page:first-child > img:last-child {
+    position: absolute;
+    top: calc(var(--width-book) / 20);
+    right: calc(var(--width-book) / 20);
+    width: 150px;
+    height: 150px;
+    animation: rotateSwing 2s infinite ease-in-out;
+}
+
+.sheet:nth-child(2) .page:nth-child(2) .photo:first-child {
+    top: calc(var(--width-book) / 40);
+    left: calc(var(--width-book) / 40);
+}
+
+.sheet:nth-child(2) .page:nth-child(2) .photo:nth-child(2) {
+    bottom: calc(var(--width-book) / 40);
+    right: calc(var(--width-book) / 40);
+}
+
+.sheet:nth-child(2) .page:nth-child(2) img:nth-child(3) {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+}
+
+.sheet:nth-child(2) .page:nth-child(2) img:nth-child(4) {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: calc(var(--width-book) / 20);
+    right: calc(var(--width-book) / 20);
+    animation: rotateSwing 2s infinite ease-in-out;
+}
+
+.sheet:nth-child(3) .page:first-child .photo:first-child {
+    top: calc(var(--width-book) / 10);
+}
+
+.sheet:nth-child(3) .page:first-child > img:nth-child(2) {
+    position: absolute;
+    bottom: calc(var(--width-book) / 2.5);
+    left: calc(var(--width-book) / 10);
+    width: 150px;
+    height: 150px;
+}
+
+.sheet:nth-child(3) .page:first-child > img:nth-child(3) {
+    position: absolute;
+    bottom: calc(var(--width-book) / 30);
+    right: calc(var(--width-book) / 40);
+    width: 400px;
+    height: 200px;
+}
+
+.sheet:nth-child(3) .page:first-child > img:last-child {
+    position: absolute;
+    bottom: calc(var(--width-book) / 2);
+    right: calc(var(--width-book) / 40);
+    width: 100px;
+    height: 100px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.sheet:nth-child(3) .page:last-child {
+    font-size: 40px;
+    color: white;
+    font-family: "Noto Sans KR", sans-serif;
+}
+@keyframes rotateSwing {
+    0% {
+      transform: rotate(-20deg);
+    }
+    50% {
+      transform: rotate(20deg);
+    }
+    100% {
+      transform: rotate(-20deg);
+    }
+  }
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

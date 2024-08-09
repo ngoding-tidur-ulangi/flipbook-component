@@ -1,8 +1,6 @@
 const sheets = document.getElementsByClassName("sheet")
 const pages = document.querySelectorAll(".page")
-const background = document.getElementsByClassName("background")
 const book = document.getElementsByClassName("book")[0]
-const p = document.querySelectorAll(".book p")
 
 let isFromTop = false
 let isFromLeft = false
@@ -10,25 +8,13 @@ let isFromLeft = false
 for (let j = 0; j < pages.length; j++) {
     pages[j].style.zIndex = `${j}`
 
-    pages[j].addEventListener("mouseenter", () => {
-        background[0].style.filter = "blur(100px)"
-        background[0].style.backgroundColor = "#9f5363"
-        background[1].style.filter = "blur(100px)"
-        background[1].style.backgroundColor = "#9f5363"
-        book.style.translate = "0 -30px"
-        p[0].style.top = `${sheets[0].getBoundingClientRect().height/2 - 70}px`
-        p[1].style.top = `${sheets[0].getBoundingClientRect().height/2 - 70}px`
-    })
+    // pages[j].addEventListener("mouseenter", () => {
+    //     book.style.translate = "0 -30px"
+    // })
 
-    pages[j].addEventListener("mouseleave", () => {
-        background[0].style.filter = "blur(20px)"
-        background[0].style.backgroundColor = "white"
-        background[1].style.filter = "blur(20px)"
-        background[1].style.backgroundColor = "white"
-        book.style.translate = "0 0"
-        p[0].style.top = `${sheets[0].getBoundingClientRect().height/2 - 10}px`
-        p[1].style.top = `${sheets[0].getBoundingClientRect().height/2 - 10}px`
-    })
+    // pages[j].addEventListener("mouseleave", () => {
+    //     book.style.translate = "0 0"
+    // })
 }
 
 for (let j = 0; j < sheets.length; j++) {
@@ -44,7 +30,7 @@ for (let j = 0; j < sheets.length; j++) {
         if (pages[j * 2].style.translate, pages[j * 2 + 1].style.translate != "100%") {
             isFromLeft = true
             pages[j * 2].style.clipPath = `polygon(0 0, 0 0, 0 0, 0 0`;
-            pages[j * 2].style.boxShadow = "0 10px 10px 5px gray"
+            pages[j * 2].style.boxShadow = "0 10px 20px 5px black"
             if (e.clientY < sheetRect.top + sheetRect.height / 2) {
                 pages[j * 2].style.transformOrigin = `100% 0`
                 pages[j * 2].style.transform = 'rotate(90deg)'
@@ -60,7 +46,7 @@ for (let j = 0; j < sheets.length; j++) {
         } else {
             isFromLeft = false
             pages[j * 2 + 1].style.clipPath = `polygon(0 0, 0 0, 0 0, 0 0`;
-            pages[j * 2 + 1].style.boxShadow = "0 10px 10px 5px gray"
+            pages[j * 2 + 1].style.boxShadow = "0 -10px 20px 5px black"
             if (e.clientY < sheetRect.top + sheetRect.height / 2) {
                 pages[j * 2 + 1].style.transformOrigin = '0 0'
                 pages[j * 2 + 1].style.transform = 'rotate(-90deg)'
@@ -446,14 +432,14 @@ for (let j = 0; j < sheets.length; j++) {
                     if (minHeight < sheetRect.height) {
                         pages[j * 2 + 1].style.translate = `${2 * sheetRect.width - diffX}px ${-diffY}px`
                         if (minDeg != 999) {
-                            pages[j * 2 + 1].style.clipPath = `polygon(0 ${sheetRect.height - minHeight}px, ${minWidth}px 100%, 0 100%)`
+                            pages[j * 2 + 1].style.clipPath = `polygon(0 ${sheetRect.height - minHeight}px, ${minWidth}px 100%, -10px 105%)`
                             pages[j * 2].style.clipPath = `polygon(0 0, 100% 0, 100% ${minOverlapY - sheetRect.top}px, ${minOverlapX - sheetRect.right}px 100%, 0 100%)`
                             pages[j * 2 + 1].style.transform = `rotate(${(90 + (minDeg * 180 / Math.PI))}deg)`
                         }
                     } else if (minWidth2 < sheetRect.width) {
                         pages[j * 2 + 1].style.translate = `${2 * sheetRect.width - diffX}px ${-diffY}px`
                         if (minDeg != 999) {
-                            pages[j * 2 + 1].style.clipPath = `polygon(0 0, ${minWidth2}px 0, ${minWidth}px 100%, 0 100%)`
+                            pages[j * 2 + 1].style.clipPath = `polygon(-10px -10px, ${minWidth2}px 0, ${minWidth}px 100%, -10px 105%)`
                             pages[j * 2].style.clipPath = `polygon(0 0, ${minOverlapX2 - sheetRect.right}px 0%, ${minOverlapX - sheetRect.right}px 100%, 0 100%)`
                             pages[j * 2 + 1].style.transform = `rotate(${((90 + (minDeg * 180 / Math.PI)))}deg)`
                         }
